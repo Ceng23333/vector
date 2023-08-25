@@ -36,6 +36,8 @@ pub mod blackhole;
 pub mod clickhouse;
 #[cfg(feature = "sinks-console")]
 pub mod console;
+#[cfg(feature = "sinks-lakesoul")]
+pub mod lakesoul;
 #[cfg(feature = "sinks-databend")]
 pub mod databend;
 #[cfg(any(

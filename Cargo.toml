@@ -123,6 +123,8 @@ vrl = { version = "0.6.0", default-features = false, features = ["cli", "test", 
 pin-project = { version = "1.1.3", default-features = false }
 
 [dependencies]
+lakesoul-metadata = {git = "https://github.com/Ceng23333/LakeSoul", branch="release/for_vectordev", optional = true}
+
 vrl.workspace = true
 pin-project.workspace = true
 
@@ -661,6 +663,7 @@ sinks-logs = [
   "sinks-vector",
   "sinks-webhdfs",
   "sinks-websocket",
+  "sinks-lakesoul",
 ]
 sinks-metrics = [
   "sinks-appsignal",
@@ -726,6 +729,7 @@ sinks-utils-udp = []
 sinks-vector = ["sinks-utils-udp", "dep:tonic", "protobuf-build"]
 sinks-websocket = ["dep:tokio-tungstenite"]
 sinks-webhdfs = ["dep:opendal"]
+sinks-lakesoul = ["dep:lakesoul-metadata"]
 
 # Datadog integration
 enterprise = [
@@ -741,7 +745,7 @@ enterprise = [
 ]
 
 # Identifies that the build is a nightly build
-nightly = []
+nightly = ["sinks-lakesoul"]
 
 # Testing-related features
 all-integration-tests = [

@@ -309,6 +309,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "array-init"
+version = "2.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "3d62b7694a562cdf5a74227903507c56ab2cc8bdd1f781ed5cb4cf9c9f810bfc"
+
+[[package]]
 name = "arrayvec"
 version = "0.5.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -794,6 +800,15 @@ name = "autocfg"
 version = "1.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d468802bab17cbc0cc575e9b053f41e72aa36bfa6b7f55e3529ffa43161b97fa"
+
+[[package]]
+name = "autotools"
+version = "0.2.6"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "aef8da1805e028a172334c3b680f93e71126f2327622faef2ec3d893c0a4ad77"
+dependencies = [
+ "cc",
+]
 
 [[package]]
 name = "aws-config"
@@ -4779,6 +4794,22 @@ dependencies = [
 ]
 
 [[package]]
+name = "lakesoul-metadata"
+version = "0.1.0"
+source = "git+https://github.com/Ceng23333/LakeSoul?branch=release/for_vectordev#4dc2661f6f83895681101af23cabd438a5b0fae7"
+dependencies = [
+ "num_enum 0.5.11",
+ "postgres",
+ "postgres-types",
+ "prost",
+ "proto",
+ "serde_json",
+ "tokio",
+ "tokio-postgres",
+ "uuid",
+]
+
+[[package]]
 name = "lalrpop"
 version = "0.20.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -6284,6 +6315,32 @@ dependencies = [
 ]
 
 [[package]]
+name = "postgres"
+version = "0.19.6"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2843af30d9b6dccec9f8779eb50d56cfbec54b38c7b1bbaf50b37d6c8a4f8959"
+dependencies = [
+ "bytes 1.4.0",
+ "fallible-iterator",
+ "futures-util",
+ "log",
+ "tokio",
+ "tokio-postgres",
+]
+
+[[package]]
+name = "postgres-derive"
+version = "0.4.5"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "83145eba741b050ef981a9a1838c843fa7665e154383325aa8b440ae703180a2"
+dependencies = [
+ "heck 0.4.1",
+ "proc-macro2 1.0.66",
+ "quote 1.0.33",
+ "syn 2.0.29",
+]
+
+[[package]]
 name = "postgres-openssl"
 version = "0.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -6320,10 +6377,15 @@ version = "0.2.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8d2234cdee9408b523530a9b6d2d6b373d1db34f6a8e51dc03ded1828d7fb67c"
 dependencies = [
+ "array-init",
  "bytes 1.4.0",
  "chrono",
  "fallible-iterator",
+ "postgres-derive",
  "postgres-protocol",
+ "serde",
+ "serde_json",
+ "uuid",
 ]
 
 [[package]]
@@ -6588,6 +6650,26 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "213622a1460818959ac1181aaeb2dc9c7f63df720db7d788b3e24eacd1983e13"
 dependencies = [
  "prost",
+]
+
+[[package]]
+name = "proto"
+version = "0.1.0"
+source = "git+https://github.com/Ceng23333/LakeSoul?branch=release/for_vectordev#4dc2661f6f83895681101af23cabd438a5b0fae7"
+dependencies = [
+ "bytes 1.4.0",
+ "prost",
+ "prost-build",
+ "protobuf-src",
+]
+
+[[package]]
+name = "protobuf-src"
+version = "1.1.0+21.5"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c7ac8852baeb3cc6fb83b93646fb93c0ffe5d14bf138c945ceb4b9948ee0e3c1"
+dependencies = [
+ "autotools",
 ]
 
 [[package]]
@@ -9356,7 +9438,19 @@ dependencies = [
  "getrandom 0.2.10",
  "rand 0.8.5",
  "serde",
+ "uuid-macro-internal",
  "wasm-bindgen",
+]
+
+[[package]]
+name = "uuid-macro-internal"
+version = "1.4.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f7e1ba1f333bd65ce3c9f27de592fcbc256dafe3af2717f56d7c87761fbaccf4"
+dependencies = [
+ "proc-macro2 1.0.66",
+ "quote 1.0.33",
+ "syn 2.0.29",
 ]
 
 [[package]]
@@ -9501,6 +9595,7 @@ dependencies = [
  "itertools 0.11.0",
  "k8s-openapi 0.18.0",
  "kube",
+ "lakesoul-metadata",
  "lapin",
  "libc",
  "listenfd",
